@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.env
+data/
+evidence/
+install.log
+*.log
+.freebuff/
+.DS_Store
+Thumbs.db
+*.sqlite3
+test-results.xml
+.coverage
+htmlcov/

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>ShortsWatch — YouTube Shorts availability monitor</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/styles.css?v=2" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">▶</div>
+        <div>
+          <div class="brand-title">ShortsWatch</div>
+          <div class="brand-sub">Availability monitor</div>
+        </div>
+      </div>
+      <nav class="nav" id="nav" aria-label="Primary">
+        <button class="nav-item active" data-view="overview" type="button" aria-label="Overview" title="Overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          <span>Overview</span>
+        </button>
+        <button class="nav-item" data-view="shorts" type="button" aria-label="Shorts" title="Shorts">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M10.5 8.5v7l5-3.5z"/></svg>
+          <span>Shorts</span>
+        </button>
+        <button class="nav-item" data-view="runs" type="button" aria-label="Runs" title="Runs">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <span>Runs</span>
+        </button>
+        <button class="nav-item" data-view="channels" type="button" aria-label="Channels" title="Channels">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6.5h16M4 12h16M4 17.5h10"/><circle cx="18.5" cy="17.5" r="1.6"/></svg>
+          <span>Channels</span>
+        </button>
+        <button class="nav-item" data-view="alerts" type="button" aria-label="Alerts" title="Alerts">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9a6 6 0 1 1 12 0v4l1.6 3H4.4L6 13z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+          <span>Alerts</span>
+          <span class="nav-badge hidden" id="alert-badge">0</span>
+        </button>
+        <button class="nav-item" data-view="settings" type="button" aria-label="Settings" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M19 12a7 7 0 0 0-.1-1.2l1.8-1.4-2-3.4-2.1.9a7 7 0 0 0-2-1.2L14.3 3h-4l-.3 2.6a7 7 0 0 0-2 1.2l-2.1-.9-2 3.4L5.6 10.8A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-1.8 1.4 2 3.4 2.1-.9a7 7 0 0 0 2 1.2l.3 2.6h4l.3-2.6a7 7 0 0 0 2-1.2l2.1.9 2-3.4-1.8-1.4c.1-.4.1-.8.1-1.2z"/></svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sched-pill" id="scheduler-pill">
+          <strong>Loading…</strong>
+          <span>scheduler status</span>
+        </div>
+        <div class="hint">Public, unauthenticated viewer checks. No engagement actions.</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="page-title">Overview</h1>
+          <p class="muted" id="page-subtitle">Availability and playback health across your channels.</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn" id="btn-run-due" type="button">Run due now</button>
+          <button class="btn" id="btn-pause" type="button">Pause</button>
+          <button class="btn ghost" id="btn-refresh" type="button" title="Refresh">Refresh</button>
+        </div>
+      </header>
+      <div id="banner" class="banner hidden" role="status"></div>
+      <section id="view" class="view">
+        <div class="loading"><span class="spinner"></span> Loading dashboard…</div>
+      </section>
+    </main>
+  </div>
+
+  <div id="overlay" class="overlay hidden"></div>
+  <aside id="drawer" class="drawer hidden" role="dialog" aria-modal="true">
+    <div class="drawer-head">
+      <div>
+        <div class="drawer-title" id="drawer-title">Details</div>
+        <div class="drawer-sub" id="drawer-sub"></div>
+      </div>
+      <button class="icon-btn" id="drawer-close" type="button" aria-label="Close drawer" title="Close">✕</button>
+    </div>
+    <div class="drawer-body" id="drawer-body"></div>
+  </aside>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true"></div>
+  <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+
+  <script src="/static/app.js?v=2" defer></script>
+</body>
+</html>
